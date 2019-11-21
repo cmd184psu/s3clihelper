@@ -1,0 +1,346 @@
+/*
+https://www.webpagefx.com/web-design/hex-to-rgb/
+
+Cloudian Blue: rgb(50, 68, 88) or #324458
+Cloudian Grey: rgb(164, 167, 169) or #A4A7A9
+Cloudian Green: rgb(183, 212, 51) or #B7D433
+
+Website Blue: rgb(0, 57, 99) or #003963
+rgb(0, 29, 58) or #001D3A
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans);
+
+BODY {
+	background-color:			rgb(255, 255, 255);
+	color:						rgb(0, 0, 0);
+	font:						16px "Fira Sans",Helvetica,"Helvetica Neue",arial,sans-serif;
+	line-height:				125%;
+	margin:						0px 0px 0px 0px;
+	min-width:					568px;
+	padding:					0px 0px 0px 0px;
+}
+
+DIV.clear {
+	clear:						both;
+}
+
+DIV#content {
+	padding:					0px 8px 12px 8px;
+}
+
+DIV#content A {
+	border:						solid 1px transparent;
+	color:						rgb(0, 29, 58);
+	padding:					4px 0px 4px 0px;
+	text-decoration:			none;
+}
+
+DIV#content A:hover {
+	background-color:			rgb(0, 57, 99);
+	border:						solid 1px rgb(183, 212, 51);
+	border-radius:				8px;
+	color:						rgb(183, 212, 51);
+	font-weight:				500;
+	font-size:					92%;
+	padding:					4px 8px 4px 8px;
+}
+
+DIV#content .warn {
+	color:						rgb(128, 16, 0);
+}
+
+DIV#content DIV#home,
+DIV#content DIV#hyperstore,
+DIV#content DIV#hyperfile,
+DIV#content DIV#centos,
+DIV#content DIV#scripts {
+	display:					none;
+}
+
+DIV#content FIELDSET {
+	border:						solid 2px rgb(0, 0, 0);
+	border-radius:				8px;
+	box-shadow:					0px 0px 8px 2px rgb(128, 128, 128);
+	float:						left;
+	margin:						16px 8px 16px 8px;
+	padding:					16px 8px 16px 8px;
+	width:						384px;
+}
+
+DIV#content FIELDSET LEGEND {
+	background-color:			rgb(50, 68, 88);
+	border:						solid 2px rgb(164, 167, 169);
+	border-radius:				8px;
+	box-shadow:					0px 0px 8px 2px rgb(64, 64, 64);
+	color:						rgb(255, 255, 255);
+	font-weight:				500;
+	padding:					6px 12px 6px 12px;
+	margin-left:				8px;
+}
+
+DIV#content FIELDSET LEGEND SPAN {
+	font-size:					85%;
+	font-style:					italic;
+	margin-left:				8px;
+}
+
+DIV#content FIELDSET:hover {
+	box-shadow:					0px 0px 8px 2px rgb(0, 0, 0);
+}
+
+DIV#content FIELDSET:hover LEGEND {
+	box-shadow:					0px 0px 8px 2px rgb(32, 32, 32);
+	color:						rgb(183, 212, 51);
+}
+
+DIV#content FIELDSET.ea {
+	background-color:			rgb(248, 240, 240);
+}
+
+DIV#content FIELDSET.ea LEGEND {
+	background-color:			rgb(128, 16, 0);
+	color:						rgb(255, 255, 255)!important;
+}
+
+DIV#content FIELDSET TABLE {
+	border-collapse:			separate;
+	font-size:					12px;
+	text-align:					right;
+	width:						100%;
+}
+
+DIV#content FIELDSET TABLE TBODY TR:first-child TD {
+	padding-top:				8px;
+}
+
+DIV#content FIELDSET TABLE TBODY TR:nth-child(odd) TD:first-child {
+	font-weight:				500;
+	font-size:					16px;
+}
+
+DIV#content FIELDSET TABLE TD,
+DIV#content FIELDSET TABLE TH {
+	padding:					0px 8px 0px 8px;
+}
+
+DIV#content FIELDSET TABLE TD:first-child,
+DIV#content FIELDSET TABLE TH:first-child {
+	text-align:					left;
+	width:						75%;
+}
+
+DIV#content FIELDSET TABLE TD:last-child,
+DIV#content FIELDSET TABLE TH:last-child {
+	width:						25%;
+}
+
+DIV#content FIELDSET TABLE THEAD TH {
+	background-color:			rgb(183, 212, 51);
+	border:						solid 1px rgb(0, 0, 0);
+	border-top-left-radius:		8px;
+	border-top-right-radius:	8px;
+	font-size:					16px;
+	font-weight:				500;
+}
+
+DIV#content FIELDSET TABLE TR:nth-child(even) TD {
+	padding-left:				24px;
+	padding-bottom:				8px;
+}
+
+DIV#content FIELDSET TABLE TR:nth-child(even) TD A {
+	clear:						left;
+	float:						left;
+	line-height:				100%;
+}
+
+DIV#content FIELDSET TABLE TR TD DIV.warn {
+	color:						rgb(128, 16, 0);
+}
+
+DIV#content FIELDSET TABLE TR:nth-child(even) TD SPAN {
+	font-style:					italic;
+}
+
+DIV#footer {
+	background-color:			rgb(0, 57, 99);
+	bottom:						0px;
+	color:						rgb(255, 255, 255);
+	font-size:					12px;
+	height:						24px;
+	line-height:				200%;
+	position:					fixed;
+	text-align:					center;
+	width:						100%;
+}
+
+DIV#footer A {
+	color:						rgb(255, 255, 255);
+	margin-left:				16px;
+	text-decoration:			none;
+}
+
+DIV#header {
+	background-color:			rgb(0, 57, 99);
+	margin:						0px 0px 0px 0px;
+	padding: 					24px 4px 8px 4px;
+	text-align:					center;
+}
+
+DIV#header IMG.logo {
+	float:						left;
+	margin:						0px 0px 0px 16px;
+	width:						192px;
+}
+
+DIV#home {
+	line-height:				150%;
+}
+
+DIV#home A {
+	display:					inline-block;
+	margin:						0px 8px 0px 8px;
+}
+
+DIV#home div.warn {
+	margin:						32px 0px 32px 0px;
+}
+
+UL#navigation {
+	float:						right;
+	list-style:					none;
+	margin:						32px 16px 0px 0px;
+	padding:					0px 0px 0px 0px;
+}
+
+UL#navigation LI {
+	background-color:			rgb(50, 68, 88);
+	border:						2px solid rgb(183, 212, 51);
+	border-bottom-style:		none;
+	border-top-left-radius:		8px;
+	border-top-right-radius:	8px;
+	color:						rgb(255, 255, 255);
+	cursor:						pointer;
+	display:					inline;
+	font-weight:				500;
+	margin:						0px 4px 0px 4px;
+	padding:					8px 16px 8px 16px;
+}
+
+UL#navigation LI.selected {
+	box-shadow:					0px -1px 1px 1px rgb(183, 212, 51);
+	color:						rgb(183, 212, 51);
+	font-weight:				bold;
+}
+
+UL#navigation LI:hover {
+	box-shadow:					0px -1px 1px 1px rgb(183, 212, 51);
+	color:						rgb(183, 212, 51);
+}
+
+.curved-border {
+	border:						solid 2px rgb(0, 0, 0);
+	border-radius:				8px;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.searchResultTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.searchResultTable td, .searchResultTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.searchResultTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.searchResultTable tr:hover {background-color: #ddd;}
+
+.searchResultTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4CAF50;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 18px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#queryArea {
+ background-color: yellow;
+ font-size: 1em;
+ font-weight: bold;
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ border: 1px solid black;
+}
+

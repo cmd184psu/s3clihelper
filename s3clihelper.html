@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>S3 CLI Helper Tool v0.02 - 20Nov2019</title>
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="css/nav.css" />
+	<link rel='stylesheet' href='css/fontawesome-all5.css' />
+	<link rel="stylesheet" href="css/dropdown.css" />
+	<link rel="shortcut icon" href="fvw.png" type="image/x-icon" />
+
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="config.js"></script>
+	<script src="js/nav.js"></script>
+	<script src="js/utils.js"></script>
+	<script>
+
+	$(document).ready(function(){
+		initNav();
+		var newhtml="";
+		for(var i=0; i<config_in_mem.tools.length; i++) {
+			console.log("add "+i+" tool label="+config_in_mem.tools[i].label);
+			var newhtml=newhtml+"<a href=\"#\" onclick=\"SelectTool("+i+")\">"+config_in_mem.tools[i].label+"</a>";
+		}
+		$("#dropdownTool").html(newhtml);
+		onRefresh();
+	});
+
+</script>
+</head>
+<body>
+
+
+<!-- begin right side nav --->
+<div id="mySidenavRight" class="sidenav sidenav_right">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNavRight()">&times;</a>
+<table>
+	<tr><td colspan="2"><strong>Settings</strong></td></tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr><td colspan="2">S3 Endpoint:</td></tr>
+	<tr><td colspan="2"><input id="inputS3Endpoint" type="text" size="35" value="http://s3-region.example.com" onblur="onBlur()" /></td></tr>
+	<tr><td colspan="2">AccessKeyID</td></tr>
+	<tr><td colspan="2"><input id="inputAccessKey" type="text" size="30" placeholder="s3publickey" onblur="onBlur()" /></td></tr>
+	<tr><td colspan="2">Secret Key</td></tr>
+	<tr><td colspan="2"><input id="inputSecretKey" type="password" size="30" placeholder="secret!" onblur="onBlur()" /></td></tr>
+	<tr><td>Bucket</td><td><input id="inputBucketName" type="text" size="20" placeholder="bucket-name" onblur="onBlur()" /></td></tr>
+
+	<tr><td>User: </td><td><input id="inputDataUser" type="text" size="20" placeholder="cloudian" onblur="onBlur()" /></td></tr>
+	<tr><td>Group: </td><td><input id="inputDataGroup" type="text" size="20" placeholder="default" onblur="onBlur()" /></td></tr>
+	<tr><td colspan="2">Cloudian Mgmt Console:</td></tr><tr><td colspan="2">
+		<input id="inputCMCEndpoint" type="text" size="35" value="https://cmc.hs.example.com:8443" onblur="onBlur()" /></td></tr>
+	<tr><td colspan="2">File/Object Name: </td></tr>
+	<tr><td colspan="2"><input id="inputObjectName" type="text" size="25" placeholder="default" onblur="onBlur()" /></td></tr>
+
+</table>
+<table>
+<tr>
+<td style="width:100px"><button style="font-size:12px" onclick="Render()" id="loadButton" >Refresh <i class="fas fa-sync"></i></button></td>
+</tr>
+
+</table>
+<BR>
+</div>
+
+<!--begin top nav -->
+<div class="topnav" id="topnav">
+<div class="dropdown">
+	<button class="dropbtn">Tool: <i class="fa fa-caret-down"></i></button>
+	<div class="dropdown-content" id="dropdownTool"></div>
+</div>
+<a href="#" id="CurrentTool">None</a>
+<div class="dropdown">
+	<button class="dropbtn">Action: <i class="fa fa-caret-down"></i></button>
+	<div class="dropdown-content" id="dropdownActions"></div>
+</div>
+
+<a href="#" id="CurrentAction">None</a>
+<a href="#" onclick="Render()">Render</a>
+<div class="right-container"><a onclick="openNavRight()"><i class="fas fa-cog"></i></a></div>
+</div>
+
+<div id="main">
+	<button onclick="CopyToClipBoardCLIA()">Copy <i class="far fa-copy"></i></button>
+	<button id="docButton" onclick="window.open('https://stackoverflow.com/')" target="_">Docs <i class="fas fa-external-link-alt"></i></button>
+	<BR>
+	<textarea id="cliArea" style="width: 800px; height: 200px;" readonly></textarea>
+	<HR><BR>
+	<span id="credfile"></span><BR>
+	<button onclick="CopyToClipBoardCA()">Copy <i class="far fa-copy"></i></button><BR>
+	<textarea id="credentialArea" style="width: 800px; height: 200px;" readonly></textarea>
+</div> <!-- end of main div -->
+
+<div style="display:none" id="hiddentext"><input type="text" id="copytext" value="null"></div>
+</body>
+</html>
