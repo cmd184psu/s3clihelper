@@ -6,6 +6,7 @@ config_in_mem.s3api.secretAccessKey="kHbrfwWtEA82BrZzH7P2BdMQDofCrz7KZVmqJBP/";
 config_in_mem.s3api.bucket="bucket";
 config_in_mem.s3api.mountpoint="/media/_BUCKET_";
 config_in_mem.s3api.objectKey="myfile.txt";
+config_in_mem.standalone=true;
 
 var index=0;
 config_in_mem.tools=[];
