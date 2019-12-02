@@ -27,6 +27,8 @@
 		$("#dropdownTool").html(newhtml);
 		onRefresh();
 		document.title = config_in_mem.title;
+
+		$("#dlbtn").attr("onclick","window.open(\'"+config_in_mem.zipfile+"\')");
 	});
 
 </script>
@@ -83,7 +85,7 @@
 </div>
 
 <div id="main">
-	An offline version of this software is available here: <button onclick="window.open('/s3clihelper/S3CliHelper.zip')" target="_"><i class="fa fa-download"></i></button>
+	An offline version of this software is available here: <button id="dlbtn" onclick="window.open('/s3clihelper/S3CliHelper.zip')" target="_"><i class="fa fa-download"></i></button>
 	<BR>
 	<BR>
 	<button onclick="CopyToClipBoardCLIA()">Copy <i class="far fa-copy"></i></button>
