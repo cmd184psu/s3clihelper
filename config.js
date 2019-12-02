@@ -1,5 +1,6 @@
 var config_in_mem=JSON.parse('{"admin":{ "cmc":"https://cmc.hs.cmdhome.net:8443", "endpoint":"https://cmc.hs.cmdhome.net:19443","apiuser":"sysadmin", "apipw":"public", "auth":"Basic c3lzYWRtaW46cHVibGlj"}, "dataowner":{"cuser":"cloudian_adm","cgroup":"default"},"s3api":{"endpoint":"http://s3-region.hs.cmdhome.net","accessKeyId":"00ea11f0e76752fb87e5","secretAccessKey":"kHbrfwWtEA82BrZzH7P2BdMQDofCrz7KZVmqJBP/","bucket":"bucket"}}');
 
+config_in_mem.title="S3 CLI Helper v0.04 - 1 Dec 2019"
 config_in_mem.s3api.endpoint="http://s3-region.hs.cmdhome.net",
 config_in_mem.s3api.accessKeyId="00ea11f0e76752fb87e5";
 config_in_mem.s3api.secretAccessKey="kHbrfwWtEA82BrZzH7P2BdMQDofCrz7KZVmqJBP/";
@@ -11,9 +12,9 @@ config_in_mem.standalone=true;
 var index=0;
 config_in_mem.tools=[];
 config_in_mem.tools.push({});
-config_in_mem.tools[index].cli="/usr/bin/aws s3";
-config_in_mem.tools[index].credentials="~/.aws/credentials"
-config_in_mem.tools[index].label="Amazon CLI (UNIX)";
+config_in_mem.tools[index].cli="aws s3";
+config_in_mem.tools[index].credentials="(UNIX) ~/.aws/credentials (WINDOWS) C:\\Users\\%USERNAME%\\.aws\\credentials"
+config_in_mem.tools[index].label="Amazon CLI (UNIX and Windows)";
 config_in_mem.tools[index].docURL="https://docs.aws.amazon.com/cli/latest/reference/s3/";
 config_in_mem.tools[index].action=[];
 config_in_mem.tools[index].action.push("list bucket");
@@ -44,7 +45,7 @@ config_in_mem.tools[index].cmd.push("_CLI_ cp ./_OBJECT_ s3://_BUCKET_/_OBJECT_"
 config_in_mem.tools.push({});
 index=2;
 config_in_mem.tools[index].cli="/usr/bin/hs-s3curl.pl";
-config_in_mem.tools[index].credentials="~/.s3curl"
+config_in_mem.tools[index].credentials="(UNIX) ~/.s3curl (WINDOWS) C:\\Users\\%USERNAME%\\.s3curl"
 config_in_mem.tools[index].label="s3curl.pl (cloudian.com)";
 config_in_mem.tools[index].docURL="https://github.com/rtdp/s3curl"
 config_in_mem.tools[index].action=[];
