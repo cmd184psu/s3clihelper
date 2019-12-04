@@ -66,3 +66,5 @@ rpms:
 	mv -vf $(RPMTOP)/SRPMS/$(NAME)-* .
 
 
+upload:
+	./upload.sh
