@@ -91,6 +91,15 @@ function onBlur() {
 	config_in_mem.s3api.accessKeyId=$("#inputAccessKey").val();
 	config_in_mem.s3api.secretAccessKey=$("#inputSecretKey").val();
 	config_in_mem.s3api.bucket=$("#inputBucketName").val();
+
+	if($("#inputRegion").val()!="")
+		config_in_mem.s3api.region=$("#inputRegion").val();
+	if($("#inputProfile").val()!="")
+		config_in_mem.s3api.profile=$("#inputProfile").val();
+	if($("#inputVolume").val()!="")
+		config_in_mem.s3api.volume=$("#inputVolume").val();
+	else
+		config_in_mem.s3api.volume=config_in_mem.s3api.bucket;
 	//config_in_mem.admin.auth=$("#inputAdminAuth").val(); 
 	if(config_in_mem.standalone) config_in_mem.s3api.objectKey=$("#inputObjectName").val();
 		
@@ -110,6 +119,9 @@ function onRefresh() {
 	$("#inputAccessKey").val(config_in_mem.s3api.accessKeyId);
 	$("#inputSecretKey").val(config_in_mem.s3api.secretAccessKey);
 	$("#inputBucketName").val(config_in_mem.s3api.bucket);
+	$("#inputRegion").val(config_in_mem.s3api.region);
+	$("#inputProfile").val(config_in_mem.s3api.profile);
+	$("#inputVolume").val(config_in_mem.s3api.volume);
 
 	$("#inputDataUser").val(config_in_mem.dataowner.cuser);
 	$("#inputDataGroup").val(config_in_mem.dataowner.cgroup);

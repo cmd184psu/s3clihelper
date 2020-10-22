@@ -1,5 +1,5 @@
 PWD=$(shell pwd)
-VER=1.0.3
+VER=1.05
 NAME=Cloudian-S3CliHelper
 PNAME=$(NAME)-$(VER)
 RPMTOP=~/rpmbuild

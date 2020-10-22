@@ -18,62 +18,69 @@ function extractHostname(url) {
     return hostname;
 }
 
+function ReplaceStrings(content) {
+  var res=content;
+  var str=res;
+  res=str.replace("_CLI_", config_in_mem.tools[curtool].cli);
+  str=res;
+  res=str.replace("_MOUNTPOINT_", config_in_mem.s3api.mountpoint);
+  str=res;
+  res=str.replace("_BUCKET_", config_in_mem.s3api.bucket);
+  str=res;
+  res = str.replace("_OBJECT_", config_in_mem.s3api.objectKey);
+  str=res;
+  res = str.replace("_S3_ENDPOINT_", config_in_mem.s3api.endpoint);
+  
+  
+  if(config_in_mem.s3api.region==undefined) config_in_mem.s3api.region="region";
+  str=res;
+  res = str.replace("_REGION_", config_in_mem.s3api.region);
+  
+  if(config_in_mem.s3api.profile==undefined) config_in_mem.s3api.profile="default";
+
+  str=res;
+  res = str.replace("_PROFILE_", config_in_mem.s3api.profile);
+  
+  str=res;
+  if(config_in_mem.s3api.endpoint.startsWith("https")) {
+    res=str.replace("_SSL_","--no-verify-ssl");
+  } else {
+    res=str.replace("_SSL_","");
+  }
+
+  return res;
+}
+
 function Render() {
   console.log("Render");
 
 //  switch(curmode) {
 //    case 0: // list bucket
 
-    var res = config_in_mem.tools[curtool].cmd[curmode].replace("_CLI_", config_in_mem.tools[curtool].cli);
-    str=res;
-    res = str.replace("_MOUNTPOINT_", config_in_mem.s3api.mountpoint);
-    str=res;
-    res = str.replace("_BUCKET_", config_in_mem.s3api.bucket);
-    str=res;
-    res = str.replace("_OBJECT_", config_in_mem.s3api.objectKey);
-    str=res;
-    res = str.replace("_OBJECT_", config_in_mem.s3api.objectKey);
-    str=res;
-    res = str.replace("_S3_ENDPOINT_", config_in_mem.s3api.endpoint);
+    var line1="";
+    if(config_in_mem.tools[curtool].opts) {
+      line1 = ReplaceStrings(config_in_mem.tools[curtool].opts);
+    } 
+    var line2 = ReplaceStrings(config_in_mem.tools[curtool].cmd[curmode]);
+    
 
-    var line2 = res;
+    var line3="";
     if(config_in_mem.tools[curtool].mount) {
-      res = config_in_mem.tools[curtool].mount.replace("_CLI_", config_in_mem.tools[curtool].cli);
-      str=res;
-      console.log("str="+str);
-      res = str.replace("_MOUNTPOINT_", config_in_mem.s3api.mountpoint);
-      str=res;
-      console.log("str="+str);
-      res = str.replace("_BUCKET_", config_in_mem.s3api.bucket);
-      str=res;
-      console.log("str="+str);
-      res = str.replace("_BUCKET_", config_in_mem.s3api.bucket);
-      str=res;
-      console.log("str="+str);
-      res = str.replace("_OBJECT_", config_in_mem.s3api.objectKey);
-      str=res;
-      console.log("str="+str);
-      res = str.replace("_OBJECT_", config_in_mem.s3api.objectKey);
-      str=res;
-      console.log("str="+str);
-      res = str.replace("_S3_ENDPOINT_", config_in_mem.s3api.endpoint);
-      str=res;
-
-      res=str+"\n"+line2;
-    }
-
-
-    document.getElementById("cliArea").innerHTML = res;
+      line3 = ReplaceStrings(config_in_mem.tools[curtool].mount);
+    } 
+    
+    
+    document.getElementById("cliArea").innerHTML = line1+"\n"+line2+"\n"+line3;
 
 
 
   $("#credfile").text("Credentials File: "+config_in_mem.tools[curtool].credentials);
   switch(curtool) {
     case 0:
-      $("#credentialArea").text("[default]\naws_access_key_id = "+config_in_mem.s3api.accessKeyId+"\naws_secret_access_key = "+config_in_mem.s3api.secretAccessKey);
+      $("#credentialArea").text("["+config_in_mem.s3api.profile+"]\nregion="+config_in_mem.s3api.region+"\naws_access_key_id = "+config_in_mem.s3api.accessKeyId+"\naws_secret_access_key = "+config_in_mem.s3api.secretAccessKey);
     break;
     case 1:
-      $("#credentialArea").text("[default]\naccess_key = "+
+      $("#credentialArea").text("["+config_in_mem.s3api.profile+"]\naccess_key = "+
       config_in_mem.s3api.accessKeyId+"\nsecret_key = "+
       config_in_mem.s3api.secretAccessKey+"\nhost_base = "+
       extractHostname(config_in_mem.s3api.endpoint)+
@@ -82,17 +89,26 @@ function Render() {
     break;
     case 2:
       $("#credentialArea").text(
-        "%awsSecretAccessKeys = (\n\tdefault => {\n\t\tid => \'"+
+        "%awsSecretAccessKeys = (\n\t"+config_in_mem.s3api.profile+" => {\n\t\tid => \'"+
         config_in_mem.s3api.accessKeyId+"\',\n\t\tkey => \'"+
         config_in_mem.s3api.secretAccessKey+"\',\n\t},\n);");
     break;
     case 3: //s3fs
     $("#credentialArea").text(config_in_mem.s3api.accessKeyId+":"+config_in_mem.s3api.secretAccessKey);
     break;
+    case 4: //splunk
 
+      if(config_in_mem.s3api.volume==undefined) config_in_mem.s3api.volume=config_in_mem.s3api.bucket;
+      $("#credentialArea").text(
+"[volume:"+config_in_mem.s3api.volume+"]\nrepFactor = auto\nstorageType = remote\npath = s3://"+config_in_mem.s3api.bucket+"\n"+
+"remote.s3.signature_version = v2\nremote.s3.access_key = "+config_in_mem.s3api.accessKeyId+"\n"+
+"remote.s3.secret_key = "+config_in_mem.s3api.secretAccessKey+"\nremote.s3.endpoint = "+config_in_mem.s3api.endpoint+"\n\n"+
+
+"["+config_in_mem.s3api.profile+"]\nrepFactor = auto\nremotePath = volume:"+config_in_mem.s3api.volume+"/$_index_name\n"+
+"homePath = $SPLUNK_DB/$_index_name/db\ncoldPath = $SPLUNK_DB/$_index_name/colddb\nthawedPath = $SPLUNK_DB/$_index_name/thaweddb\n"+
+"maxDataSize = auto\nhostlist_recency_secs = 864000"); 
+    break;
   }
-
-
 }
 
 function SelectTool(st) {

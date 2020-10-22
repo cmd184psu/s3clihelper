@@ -29,6 +29,9 @@
 		document.title = config_in_mem.title;
 
 		$("#dlbtn").attr("onclick","window.open(\'"+config_in_mem.zipfile+"\')");
+
+
+		openNavRight()
 	});
 
 </script>
@@ -49,6 +52,9 @@
 	<tr><td colspan="2">Secret Key</td></tr>
 	<tr><td colspan="2"><input id="inputSecretKey" type="password" size="30" placeholder="secret!" onblur="onBlur()" /></td></tr>
 	<tr><td>Bucket</td><td><input id="inputBucketName" type="text" size="20" placeholder="bucket-name" onblur="onBlur()" /></td></tr>
+	<tr><td>Region</td><td><input id="inputRegion" type="text" size="20" placeholder="us-east" onblur="onBlur()" /></td></tr>
+	<tr><td>Profile</td><td><input id="inputProfile" type="text" size="20" placeholder="default" onblur="onBlur()" /></td></tr>
+	<tr><td>Volume</td><td><input id="inputVolume" type="text" size="20" placeholder="volume" onblur="onBlur()" /></td></tr>
 
 	<tr><td>User: </td><td><input id="inputDataUser" type="text" size="20" placeholder="cloudian" onblur="onBlur()" /></td></tr>
 	<tr><td>Group: </td><td><input id="inputDataGroup" type="text" size="20" placeholder="default" onblur="onBlur()" /></td></tr>
@@ -84,7 +90,7 @@
 <div class="right-container"><a onclick="openNavRight()"><i class="fas fa-cog"></i></a></div>
 </div>
 
-<div id="main">
+<div id="main" style="padding-left: 10px">
 	An offline version of this software is available here: <button id="dlbtn" onclick="window.open('/s3clihelper/S3CliHelper.zip')" target="_"><i class="fa fa-download"></i></button>
 	<BR>
 	<BR>
@@ -92,11 +98,11 @@
 	<button id="docButton" onclick="window.open('https://stackoverflow.com/')" target="_">Docs <i class="fas fa-external-link-alt"></i></button>
 	<button id="dowloadButton" onclick="window.open('https://www.google.com')" target="_">Download <i class="fa fa-download"></i></button>
 	<BR>
-	<textarea id="cliArea" style="width: 800px; height: 50px; font-size: 15px;" readonly></textarea>
+	<textarea id="cliArea" style="width: 1230px; height: 137px; font-size: 15px;" readonly></textarea>
 	<HR><BR>
 	<span id="credfile"></span><BR>
 	<button onclick="CopyToClipBoardCA()">Copy <i class="far fa-copy"></i></button><BR>
-	<textarea id="credentialArea" style="width: 800px; height: 120px; font-size: 15px;" readonly></textarea>
+	<textarea id="credentialArea" style="width: 1230px; height: 335px; font-size: 15px;" readonly></textarea>
 </div> <!-- end of main div -->
 
 <div style="display:none" id="hiddentext"><input type="text" id="copytext" value="null"></div>
