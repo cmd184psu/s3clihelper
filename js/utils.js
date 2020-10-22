@@ -30,15 +30,15 @@ function onBlur() {
 		config_in_mem.s3api.volume=$("#inputVolume").val();
 	else
 		config_in_mem.s3api.volume=config_in_mem.s3api.bucket;
-	//config_in_mem.admin.auth=$("#inputAdminAuth").val(); 
-	if(config_in_mem.standalone) config_in_mem.s3api.objectKey=$("#inputObjectName").val();
-		
-	if(config_in_mem.standalone==undefined || !config_in_mem.standalone) {
-		for(var i=0; i<config_in_mem.chapters.length; i++) {
-			config_in_mem.chapters[i].enabled=$("#item"+i+"Enabled").is(':checked');
-			config_in_mem.chapters[i].qrlink=$("#inputItem"+i+"QRLink").val();
-		}	
-	}
+
+	if($("#inputStoragePolicy").val()!="")
+		config_in_mem.s3api.storagePolicy=$("#inputStoragePolicy").val();
+
+	if($("#inputStorageClass").val()!="") 
+		config_in_mem.s3api.storageClass=$("#inputStorageClass").val();
+
+	if($("#inputIAMEndpoint").val()!="") 
+		config_in_mem.s3api.iamendpoint=$("#inputIAMEndpoint").val();
 }
 
 function onRefresh() {
@@ -52,6 +52,9 @@ function onRefresh() {
 	$("#inputRegion").val(config_in_mem.s3api.region);
 	$("#inputProfile").val(config_in_mem.s3api.profile);
 	$("#inputVolume").val(config_in_mem.s3api.volume);
+	$("#inputStoragePolicy").val(config_in_mem.s3api.storagePolicy);
+	$("#inputStorageClass").val(config_in_mem.s3api.storageClass);
+	$("#inputIAMEndpoint").val(config_in_mem.s3api.iamendpoint);
 
 	$("#inputDataUser").val(config_in_mem.dataowner.cuser);
 	$("#inputDataGroup").val(config_in_mem.dataowner.cgroup);
