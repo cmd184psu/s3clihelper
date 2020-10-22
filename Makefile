@@ -42,7 +42,7 @@ zip: clean
 	cp -avpf config.js $(PNAME)/
 	cp -avpf webfonts $(PNAME)/
 	zip -r $(PNAME).zip $(PNAME)
-	sudo install -m 444 $(PNAME).zip  $(DESTDIR)/opt/Cloudian/HyperCamp/www/
+	#sudo install -m 444 $(PNAME).zip  $(DESTDIR)/opt/Cloudian/HyperCamp/www/
 
 rpms:
 	#begin standard prep

@@ -156,7 +156,7 @@ if(ADD_SPLUNK) {
 if(ADD_KUBERNETES) {
     thisToolItem.cli="kubectl";
     thisToolItem.credentials="bucket-owner-secret.yaml"
-    thisToolItem.label="Cloudian Kubernetes Operator";
+    thisToolItem.label="Cloudian Kubernetes Operator (NEW!)";
     thisToolItem.docURL="https://s3.cloudianhyperstore.com/downloads/HyperStore/CloudianK8sS3Operator_QuickStart_v-1.0.pdf";
     thisToolItem.action=[];
     thisToolItem.action.push("Create Secret Credentials");
