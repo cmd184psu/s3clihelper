@@ -1,0 +1,18 @@
+aws $AWS_OPTS s3api get-bucket-lifecycle-configuration --bucket bucket
+------
+aws $AWS_OPTS s3api put-bucket-lifecycle-configuration --bucket bucket --lifecycle-configuration file://lifecycle.json 
+------
+{
+    "Rules": [
+        {
+            "ID": "id",
+            "Filter": {
+                "Prefix" : ""
+	    },
+            "Status": "Enabled", 
+            "Expiration": {
+                "Days": 100
+            }
+        }
+    ]
+}
